@@ -18,3 +18,4 @@
     name: nginx
     enabled: true
     state: restarted
+

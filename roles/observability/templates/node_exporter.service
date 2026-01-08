@@ -1,0 +1,9 @@
+[Unit]
+Description=node_exporter
+
+[Service]
+WorkingDirectory=/opt/node_exporter-{{node_exporter_version}}.linux-amd64
+ExecStart=/opt/node_exporter-{{node_exporter_version}}.linux-amd64/node_exporter
+
+[Install]
+WantedBy=multi-user.target
