@@ -3,7 +3,7 @@ Description=node_exporter
 
 [Service]
 WorkingDirectory=/opt/node_exporter-{{node_exporter_version}}.linux-amd64
-ExecStart=/opt/node_exporter-{{node_exporter_version}}.linux-amd64/node_exporter --collector.ethtool
+ExecStart=/opt/node_exporter-{{node_exporter_version}}.linux-amd64/node_exporter --collector.ethtool --collector.systemd
 
 [Install]
 WantedBy=multi-user.target
