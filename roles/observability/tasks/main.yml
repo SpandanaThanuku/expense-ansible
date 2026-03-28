@@ -47,7 +47,7 @@
 - name: Restart rsyslog
   ansible.builtin.systemd_service:
     name: rsyslog
-    status: restarted
+    state: restarted
 
 
 
