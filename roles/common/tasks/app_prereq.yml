@@ -24,5 +24,5 @@
   vars:
     artifactory_user: "{{ lookup('amazon.aws.aws_ssm', 'artifactory.user', region='us-east-1' ) }}"
     artifactory_password: "{{ lookup('amazon.aws.aws_ssm', 'artifactory.password', region='us-east-1' ) }}"
-    app_version: "{{ lookup('amazon.aws.aws_ssm', '{{env}}.expense.{{component}}_app_version', region='us-east-1' ) }}"
+    app_version: "{{ lookup('amazon.aws.aws_ssm', '{{env}}.expense.{{component}}.app_version', region='us-east-1' ) }}"
 
