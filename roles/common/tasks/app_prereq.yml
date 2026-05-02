@@ -9,8 +9,20 @@
     state: directory
     owner: "{{app_user}}"
 
+#- name: download and extract app content
+#  ansible.builtin.unarchive:
+#    src: https://expense-artifacts.s3.amazonaws.com/{{ component }}.zip
+#    dest: "{{ app_location }}"
+#   remote_src: true
+
+
 - name: download and extract app content
   ansible.builtin.unarchive:
-    src: https://expense-artifacts.s3.amazonaws.com/{{ component }}.zip
+    src: http://{{artifactory_user}}.{{artifactory_password}}@artifactory-int.tsdevops25.online:8081/artifactory/expense-{{ component }}/{{app_version}}.zip
     dest: "{{ app_location }}"
     remote_src: true
+    vars:
+      artifactory_user: "{{ lookup('amazon.aws.aws_ssm', 'artifactory_user', region='us-east-1' ) }}"
+      artifactory_password: "{{ lookup('amazon.aws.aws_ssm', 'artifactory_password', region='us-east-1' ) }}"
+      app_version: "{{ lookup('amazon.aws.aws_ssm', '{{env}}.expense.{{component}}_app_version', region='us-east-1' ) }}"
+
